@@ -17,10 +17,10 @@
 cd /tmp/
 wget https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
 tar zxf node_exporter-0.18.1.linux-amd64.tar.gz
-cp /node_exporter-0.18.1.linux-amd64/node_exporter /usr/local/bin
+cp /tmp/node_exporter-0.18.1.linux-amd64/node_exporter /usr/local/bin
 useradd -rs /bin/false node_exporter    #  -r = create a system account |  -s = login shell of the new account
 chown node_exporter:node_exporter /usr/local/bin/node_exporter  
-rm -rf /node_exporter-0.18.1.linux-amd64/node_exporter-0.18.1.linux-amd64*
+rm -rf node_exporter-0.18.1.linux-amd64*
 
 cat << EOF > /lib/systemd/system/node_exporter.service
 [Unit]
