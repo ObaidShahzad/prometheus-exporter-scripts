@@ -1,6 +1,6 @@
 #!/bin/bash
 
-##############################################3############
+#########################################################
 #
 # Apache Exporter for Prometheus - Ubuntu (systemd)
 #
@@ -10,15 +10,14 @@
 # 
 # Tested on: Ubuntu 18.04
 #
-# Dated: 8/6/2020
+# Dated: August 7, 2020
 #
-###########################################################
+##########################################################
 
 cd /tmp
 wget https://github.com/Lusitaniae/apache_exporter/releases/download/v0.8.0/apache_exporter-0.8.0.linux-amd64.tar.gz
 tar xvf apache_exporter-0.8.0.linux-amd64.tar.gz
-cd apache_exporter-0.8.0.linux-amd64
-cp apache_exporter /usr/local/bin
+cp /apache_exporter-0.8.0.linux-amd64/apache_exporter /usr/local/bin
 rm -rf apache_exporter-0.8.0.linux-amd64.tar.gz apache_exporter-0.8.0.linux-amd64
 groupadd --system apache_exporter
 useradd -s /bin/false -r -g apache_exporter apache_exporter

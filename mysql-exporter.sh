@@ -19,15 +19,15 @@ read -p "Enter MySQL database password: " mysql_pass
 
 export DEBIAN_FRONTEND=noninteractive
 apt update
-apt install curl wget tar -y
+apt install -y curl wget tar
 
 curl -s https://api.github.com/repos/prometheus/mysqld_exporter/releases/latest   | grep browser_download_url   | grep linux-amd64 | cut -d '"' -f 4   | wget -i -
 tar xvf mysqld_exporter*.tar.gz
-cd mysqld_exporter*
-cp mysqld_exporter /usr/local/bin/
+cp /mysqld_exporter*/mysqld_exporter /usr/local/bin/
 chmod +x /usr/local/bin/mysqld_exporter
 groupadd --system mysql_exporter
 useradd -s /sbin/nologin --system -g mysql_exporter mysql_exporter
+rm -rf /mysqld_exporter*
 
 cat << EOF > /tmp/commands.sql
    CREATE USER 'mysqld_exporter'@'localhost' IDENTIFIED BY 'prometheus' WITH MAX_USER_CONNECTIONS 2;
