@@ -23,7 +23,7 @@ apt install -y curl wget tar
 
 curl -s https://api.github.com/repos/prometheus/mysqld_exporter/releases/latest   | grep browser_download_url   | grep linux-amd64 | cut -d '"' -f 4   | wget -i -
 tar xvf mysqld_exporter*.tar.gz
-cp /mysqld_exporter*/mysqld_exporter /usr/local/bin/
+cp /tmp/mysqld_exporter*/mysqld_exporter /usr/local/bin/
 chmod +x /usr/local/bin/mysqld_exporter
 groupadd --system mysql_exporter
 useradd -s /sbin/nologin --system -g mysql_exporter mysql_exporter
