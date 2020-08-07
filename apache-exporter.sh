@@ -17,8 +17,8 @@
 cd /tmp
 wget https://github.com/Lusitaniae/apache_exporter/releases/download/v0.8.0/apache_exporter-0.8.0.linux-amd64.tar.gz
 tar xvf apache_exporter-0.8.0.linux-amd64.tar.gz
-cp /apache_exporter-0.8.0.linux-amd64/apache_exporter /usr/local/bin
-rm -rf apache_exporter-0.8.0.linux-amd64.tar.gz apache_exporter-0.8.0.linux-amd64
+cp /tmp/apache_exporter-0.8.0.linux-amd64/apache_exporter /usr/local/bin
+rm -rf /tmp/apache_exporter-0.8.0.linux-amd64*
 groupadd --system apache_exporter
 useradd -s /bin/false -r -g apache_exporter apache_exporter
 
