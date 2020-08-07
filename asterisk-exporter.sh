@@ -43,3 +43,11 @@ EOF
 systemctl daemon-reload
 systemctl start asterisk_exporter
 systemctl enable asterisk_exporter
+
+# journalctl -f -u asterisk_exporter.service    - To make sure everything is running smoothly :)   -f = follow | -u = Unit
+
+#-- Add prometheus scrape target --- /etc/prometheus/prometheus.yml
+# 
+#   - job_name: asterisk
+#     static_configs:
+#       - targets: ['10.0.0.121:9200']
