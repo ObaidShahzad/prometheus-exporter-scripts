@@ -21,9 +21,11 @@ export DEBIAN_FRONTEND=noninteractive
 apt update
 apt install -y curl wget tar
 
+cd /tmp
 curl -s https://api.github.com/repos/prometheus/mysqld_exporter/releases/latest   | grep browser_download_url   | grep linux-amd64 | cut -d '"' -f 4   | wget -i -
 tar xvf mysqld_exporter*.tar.gz
-cp /tmp/mysqld_exporter*/mysqld_exporter /usr/local/bin/
+cd /tmp/mysqld_exporter*/
+cp mysqld_exporter /usr/local/bin/
 chmod +x /usr/local/bin/mysqld_exporter
 groupadd --system mysql_exporter
 useradd -s /sbin/nologin --system -g mysql_exporter mysql_exporter
@@ -88,6 +90,6 @@ systemctl start mysql_exporter
 
 #-- Add prometheus scrape target --- /etc/prometheus/prometheus.yml
 # 
-#   - job_name: mysql
-#     static_configs:
-#       - targets: ['10.0.0.121:9104']
+#  - job_name: mysql
+#    static_configs:
+#      - targets: ['10.0.0.121:9104']
